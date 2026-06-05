@@ -19,13 +19,35 @@ Varre a Biblioteca de Anúncios do Meta e retorna os criativos ativos no nicho, 
 
 ---
 
+## Antes de rodar as skills — o passo que a maioria ignora
+
+As skills pesquisam pelos termos que você passa. O resultado depende de quão bons são esses termos.
+
+O erro mais comum: pesquisar como especialista. "Harmonização orofacial", "toxina botulínica", "recomposição corporal" — são termos técnicos que o público raramente digita.
+
+**O que funciona:** pedir pro Claude pensar como o paciente que está com o problema, não como o profissional que resolve.
+
+Antes de rodar qualquer skill, faça isso:
+
+```
+Você é uma pessoa de 35 anos que quer melhorar a aparência do rosto
+mas não sabe os termos técnicos. Como você pesquisaria isso no Google?
+Me dá 5 termos que você digitaria.
+```
+
+Os termos que aparecem — "botox lábios", "deixar rosto mais jovem", "tirar bigode chinês" — são o que o público realmente busca. Esses são os termos que você passa para `/trends` e `/meta-radar`.
+
+O Claude ajuda a potencializar a pesquisa, mas quem sabe o que o paciente sente é o especialista. Use esse conhecimento para guiar os termos — a skill faz o resto.
+
+---
+
 ## Como usar juntas
 
 ```
-/trends "harmonização orofacial" "botox facial"
-→ descobre o que o público busca no Google
+/trends "botox facial" "harmonizar rosto" "bigode chinês"
+→ descobre o que o público busca no Google agora
 
-/meta-radar "harmonização orofacial"
+/meta-radar "harmonização orofacial" "botox facial"
 → descobre o que os concorrentes estão veiculando no Meta
 
 /carrossel [com gancho definido pelas duas pesquisas]
@@ -36,43 +58,22 @@ Varre a Biblioteca de Anúncios do Meta e retorna os criativos ativos no nicho, 
 
 ## Instalação
 
-**Requisito:** [Claude Code](https://claude.ai/code) instalado — funciona igual no terminal, no VS Code (extensão Claude Code) e no app desktop. A pasta de skills é a mesma em todos.
+**Requisito:** [Claude Code](https://claude.ai/code) instalado — funciona igual no terminal, no VS Code (extensão Claude Code) e no app desktop.
 
-### Instalação em um comando (Windows)
-
-Cole isso no terminal e pressione Enter:
+**Windows (cole no terminal e pressione Enter):**
 
 ```powershell
 git clone https://github.com/vhpoliv/marketing-skills.git $env:TEMP\mkt-skills; Copy-Item "$env:TEMP\mkt-skills\trends" "$env:USERPROFILE\.claude\skills\" -Recurse -Force; Copy-Item "$env:TEMP\mkt-skills\meta-radar" "$env:USERPROFILE\.claude\skills\" -Recurse -Force; Remove-Item "$env:TEMP\mkt-skills" -Recurse -Force; pip install pytrends
 ```
 
-### Instalação em um comando (Mac/Linux)
+**Mac/Linux:**
 
 ```bash
 git clone https://github.com/vhpoliv/marketing-skills.git /tmp/mkt-skills && cp -r /tmp/mkt-skills/trends ~/.claude/skills/ && cp -r /tmp/mkt-skills/meta-radar ~/.claude/skills/ && rm -rf /tmp/mkt-skills && pip install pytrends
 ```
 
-```bash
-# 1. Clone o repositório
-git clone https://github.com/vitorhugoeu/marketing-skills.git /tmp/marketing-skills
-
-# 2. Copie as skills para a pasta do Claude Code
-cp -r /tmp/marketing-skills/trends ~/.claude/skills/
-cp -r /tmp/marketing-skills/meta-radar ~/.claude/skills/
-
-# 3. Instale a dependência do /trends
-pip install pytrends
-```
-
-No Windows (PowerShell):
-```powershell
-git clone https://github.com/vitorhugoeu/marketing-skills.git $env:TEMP\marketing-skills
-Copy-Item "$env:TEMP\marketing-skills\trends" "$env:USERPROFILE\.claude\skills\" -Recurse
-Copy-Item "$env:TEMP\marketing-skills\meta-radar" "$env:USERPROFILE\.claude\skills\" -Recurse
-pip install pytrends
-```
-
 Depois de instalado, acione diretamente no Claude Code:
+
 ```
 /trends "seu nicho aqui"
 /meta-radar "seu nicho aqui"
