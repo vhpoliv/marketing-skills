@@ -36,7 +36,7 @@ Varre a Biblioteca de Anúncios do Meta e retorna os criativos ativos no nicho, 
 
 ## Instalação
 
-**Requisito:** [Claude Code](https://claude.ai/code) instalado.
+**Requisito:** [Claude Code](https://claude.ai/code) instalado — funciona igual no terminal, no VS Code (extensão Claude Code) e no app desktop. A pasta de skills é a mesma em todos.
 
 ```bash
 # 1. Clone o repositório
