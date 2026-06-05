@@ -38,6 +38,20 @@ Varre a Biblioteca de Anúncios do Meta e retorna os criativos ativos no nicho, 
 
 **Requisito:** [Claude Code](https://claude.ai/code) instalado — funciona igual no terminal, no VS Code (extensão Claude Code) e no app desktop. A pasta de skills é a mesma em todos.
 
+### Instalação em um comando (Windows)
+
+Cole isso no terminal e pressione Enter:
+
+```powershell
+git clone https://github.com/vhpoliv/marketing-skills.git $env:TEMP\mkt-skills; Copy-Item "$env:TEMP\mkt-skills\trends" "$env:USERPROFILE\.claude\skills\" -Recurse -Force; Copy-Item "$env:TEMP\mkt-skills\meta-radar" "$env:USERPROFILE\.claude\skills\" -Recurse -Force; Remove-Item "$env:TEMP\mkt-skills" -Recurse -Force; pip install pytrends
+```
+
+### Instalação em um comando (Mac/Linux)
+
+```bash
+git clone https://github.com/vhpoliv/marketing-skills.git /tmp/mkt-skills && cp -r /tmp/mkt-skills/trends ~/.claude/skills/ && cp -r /tmp/mkt-skills/meta-radar ~/.claude/skills/ && rm -rf /tmp/mkt-skills && pip install pytrends
+```
+
 ```bash
 # 1. Clone o repositório
 git clone https://github.com/vitorhugoeu/marketing-skills.git /tmp/marketing-skills
